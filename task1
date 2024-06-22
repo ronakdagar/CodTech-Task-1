@@ -1,1 +1,76 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the Titanic dataset from Seaborn
+df = sns.load_dataset('titanic')
+df.head()
+# Get a summary of the dataset
+df.info()
+# Check for missing values
+df.isnull().sum()
+
+# Drop columns with too many missing values (e.g., 'deck' column)
+df.drop(columns=['deck'], inplace=True)
+
+# Fill missing values in 'age' with the median
+df['age'].fillna(df['age'].median(), inplace=True)
+
+# Fill missing values in 'embarked' with the mode
+df['embarked'].fillna(df['embarked'].mode()[0], inplace=True)
+
+# Verify that there are no missing values left
+df.isnull().sum()
+
+# Get descriptive statistics for numerical features
+df.describe()
+
+# Get descriptive statistics for categorical features
+df.describe(include=['O'])
+
+# Histogram for 'age'
+plt.figure(figsize=(10, 6))
+sns.histplot(df['age'], kde=True, bins=30)
+plt.title('Age Distribution')
+plt.show()
+
+
+# Bar plot for 'class'
+plt.figure(figsize=(6, 4))
+sns.countplot(x='class', data=df)
+plt.title('Class Distribution')
+plt.show()
+
+# Bar plot for 'sex'
+plt.figure(figsize=(6, 4))
+sns.countplot(x='sex', data=df)
+plt.title('Sex Distribution')
+
+# Scatter plot for 'age' vs 'fare'
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='age', y='fare', data=df)
+plt.title('Age vs Fare')
+plt.show()
+
+# Box plot for 'age' vs 'class'
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='class', y='age', data=df)
+plt.title('Age Distribution across Classes')
+plt.show()
+
+# Bar plot for 'survived' vs 'sex'
+plt.figure(figsize=(6, 4))
+sns.countplot(x='sex', hue='survived', data=df)
+plt.title('Survival by Sex')
+plt.show()
+
+# Heatmap of correlation matrix
+plt.figure(figsize=(12, 8))
+corr_matrix = df.corr()
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Matrix')
+plt.show()
+
+plt.show()
 
