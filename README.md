@@ -13,11 +13,11 @@ In this project, we will perform Exploratory Data Analysis (EDA) on the Californ
 
 Steps for EDA  -
 
-Load the Dataset
-Understand the Dataset
-Data Cleaning and Preparation
-Univariate Analysis
-Bivariate Analysis
-Multivariate Analysis
-Outlier Detection
-Summary of Findings
+1.Load the Dataset
+2.Understand the Dataset
+3.Data Cleaning and Preparation
+4.Univariate Analysis
+5.Bivariate Analysis
+6.Multivariate Analysis
+7.Outlier Detection
+8.Summary of Findings
